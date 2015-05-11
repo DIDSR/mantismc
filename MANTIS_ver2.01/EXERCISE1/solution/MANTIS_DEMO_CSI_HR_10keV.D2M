@@ -1,0 +1,13 @@
+Material description file (preserve format of blank spaces/lines)
+!------------------------------------------------------------------
+# of materials other than air (air is the zero material)
+order is defined as numbers used in the geometry.in file
+7	  ALLWAYS 1 SCINTILLATOR, 2 PHOTO-DIODE, 3 ABS-VACUUM
+!------------------------------------------------------------------
+csi.dm2			
+diode.dm2	
+abs-vacuum.dm2	
+backing.dm2	
+substrate.dm2	
+gas.dm2		
+pseudo-vacuum.dm2

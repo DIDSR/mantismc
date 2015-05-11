@@ -1,0 +1,28 @@
+# gnuplot script file for penEasy
+# Last update:
+#   2004-12-12 by JS
+#   2004-11-06 by JS
+
+# Factor from keV to eV:
+f = 1.0e3
+
+reset
+set style line 1 linetype -1 linewidth 1 pointtype 8 pointsize 1
+
+set title "Total Energy Deposition"
+set xrange [-1:1]
+set xtics ("" 0)
+set ylabel "energy (keV/history)"
+plot "mantis_demo_CsItallyEnergyDeposition.dat" using 0:($1/f):($2/f) notitle with yerrorlines linestyle 1
+pause -1 "Press OK"
+
+reset
+set style line 1 linetype -1 linewidth 1 pointtype 8 pointsize 0.5
+
+set title "Pulse Height Spectrum"
+set xlabel "energy[E] (keV)"
+set ylabel "p(E) (1/keV/history)"
+plot "mantis_demo_CsItallyPulseHeightSpectrum.dat" using ($2/f):($3*f):($4*f) notitle with yerrorbars linestyle 1, \
+     "mantis_demo_CsItallyPulseHeightSpectrum.dat" using ($1/f):($3*f) notitle with steps linestyle 1
+pause -1 "Press OK"
+

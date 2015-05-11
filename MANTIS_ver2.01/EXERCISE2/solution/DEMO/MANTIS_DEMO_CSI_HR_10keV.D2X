@@ -1,0 +1,53 @@
+Place spectrum for sampling photon wavelength. First, introduce 
+number of lines to describe the source spectrum at binwave in bwave.
+
+&binsensorwave bsensorwave= 1 /
+
+
+Then, enter the wavelength lines used to describe the spectrum 
+in wspect. And the probabilities of emission for these lines. 
+The sum of all pspect must add to 100.0
+ 
+
+
+500	1
+
+
+>> EOF
+400	0.503497	
+425	0.533232	
+450	0.574042	
+475	0.645509	
+500	0.691617	
+525	0.737725	
+550	0.765389	
+575	0.77	
+580	0.765389	
+600	0.737725	
+650	0.645509	
+675	0.507186	
+700	0.41497	
+725	0.184431	
+750	0.092216	
+775	0.027665	
+800	0	
+
+500 1
+
+400	0.503497	
+425	0.533232	
+450	0.574042	
+475	0.645509	
+500	0.691617	
+525	0.737725	
+550	0.765389	
+575	0.77	
+580	0.765389	
+600	0.737725	
+650	0.645509	
+675	0.507186	
+700	0.41497	
+725	0.184431	
+750	0.092216	
+775	0.027665	
+800	0	

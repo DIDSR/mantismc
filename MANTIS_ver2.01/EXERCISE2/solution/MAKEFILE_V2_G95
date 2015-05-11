@@ -1,0 +1,19 @@
+FC       = g95 -Wall -O3
+OBJS     =  detect2.o mantis.o
+
+mantis.o: mantis.f
+	$(FC) -c  $<         
+detect2.o: detect2.f90
+	$(FC) -c detect2.f90
+
+
+EXE     = mantis_g95
+all : $(EXE)
+$(EXE) : $(OBJS)
+	$(FC) $(FS) -o $(EXE) $(OBJS) 
+	rm -f *.mod *.o
+
+clean :
+	-rm -f a.out core $(OBJS) *.mod
+#-------------------------------------------------------------------------------
+

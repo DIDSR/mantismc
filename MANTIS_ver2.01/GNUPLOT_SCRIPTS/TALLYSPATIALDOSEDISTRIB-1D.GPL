@@ -1,0 +1,16 @@
+# gnuplot script file for penEasy
+# Last update:
+#   2005-08-01 by JS
+
+# Factor from keV to eV:
+f = 1.0e-3
+
+set style line 1 linetype -1 linewidth 1 pointtype 8 pointsize 0.5
+
+set title "1D Deposited Energy Distribution"
+set xlabel "depth (cm)"
+set ylabel "Edep (keV/cm/history)"
+plot "mantis_demo_CsItallySpatialDoseDistrib.dat" using 3:($4*f):($5*f) notitle with yerrorbars linestyle 1, \
+     "mantis_demo_CsItallySpatialDoseDistrib.dat" using 2:($4*f) notitle with steps linestyle 1
+pause -1 "Press OK"
+

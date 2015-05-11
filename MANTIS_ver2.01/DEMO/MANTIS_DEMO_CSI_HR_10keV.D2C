@@ -1,0 +1,76 @@
+DETECT-II PARAMETERS
+
+!---------------------------------------------------------------------
+INSTRUCTIONS
+Lines that start with "&" contain data, the rest are comments.
+The format is as follows:
+"<aspersand>name_of_namelist <variable1>=<value1>, <variable2>=<value2>, ... /"
+
+!---------------------------------------------------------------------
+GENERAL MONTE CARLO PARAMETERS
+- pmax_mu is the mean conversion efficiency between deposited energy 
+  and optical photons generated (# photons / keV)
+- cmax is the the maximum number of events per optical history 
+- model is the model for the optical gain
+  0: delta-function
+  1: Gaussian
+  2: Poisson
+- emodel (not used)
+&mcparameters pmax_mu=0.055, cmax=5000 , model=2 , emodel=0 /
+
+!---------------------------------------------------------------------
+VARIANCE CALCULATIONS (NOT USED)
+Variance calculation for terminating runs
+&variance vtype=1, verror=0.0, vstep=10 /
+
+!---------------------------------------------------------------------
+SOURCE 
+- sg (not used)
+- sd directionality
+  1: isotropic in z>0 	
+  11: isotropic in z<0 
+  3: full isotropic
+  2: lambertian z>0 
+  22: lambertian z<0
+  4: oriented along the z axis (to the semi-plane z>0)
+  40: z<0
+  41: oriented along an arbitrary incident angle (wrt to the normal)
+- se emitted spectrum
+  1: sampled from a multiple-line table at "*.dd2"
+  2: uniformly distributed in visible (400-700 nm)
+- sp defines polarization treatment
+  1: no polarization effect (assumes averaged equations)
+  2: random linearly polarized 
+- scat_type defines type of bulk scattering model
+  1: isotropic
+  2: Rayleigh
+- iangle (NOT USED)
+&sourcetype sg=1, sd=3, se=1, sp=2 /
+&scattering_type scat_type=2 /
+&incidence_angle iangle=45 / this for specular reflectance calculations
+
+!---------------------------------------------------------------------
+SURFACE PARAMETERS
+- phimax (NOT USED)
+- beta defines fraction of added random vector to normal in rough algorithm
+- abssmoothfrac is percentage of absorption for smooth surfaces
+- absdiffrac is percentage of absorption for absdiffuser surfaces
+- absroughfrac is percentage of absorption for rough surfaces
+- absmirfrac is percentage of absorption for absmirfrac surfaces
+- detrefl is percentage of reflection for photodiode (detector) surfaces
+&binangle phimax=0, beta=0.2 /
+&surftypes abssmoothfrac=0, absdiffrac=0, absroughfrac=0, absmirfrac=0, detrefl=20 /
+
+!---------------------------------------------------------------------
+TALLYING OPTIONS
+
+- reportplot defines if tracks are to be saved for the first 5 x-ray histories
+- collect defines if pulse-height spectrum is to be saved
+- x(y)size is the number of elements in the acquired image
+- imgdx(y) is the physical dimension of the pixel of the acquired image (micron)
+- angn (not used)
+&binningtype reportplot=.false./
+&collections collect=.false. /
+&binarraysize xsize=100, ysize=100 , imgdx=1.0, imgdy=1.0 /
+&binangle angn=10000 /
+>>>> END OF FILE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

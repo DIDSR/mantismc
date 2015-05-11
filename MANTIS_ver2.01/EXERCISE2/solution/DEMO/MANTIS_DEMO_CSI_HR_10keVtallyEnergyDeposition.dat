@@ -1,0 +1,25 @@
+  
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# [SECTION REPORT ENERGY DEPOSITION]
+# Total Energy Deposition(eV) : +-2sigma
+ 7.16634E+03  1.1E+02
+ 
+# Performance report
+#   Random seeds:
+#            1
+#            1
+#   No. of histories simulated [N]:
+#         7083
+#   CPU time [t] (s):
+#    5.71641E+02
+#   Speed (histories/s):
+#    1.23907E+01
+#   Average uncertainty (above 1/2 max score) in % [uncert]:
+#    1.48872E+00
+#   Intrinsic efficiency [N*uncert^2]^-1:
+#    6.37023E-05
+#   Absolute efficiency [t*uncert^2]^-1:
+#    7.89313E-04
+#
+# Have a nice day.
+ 

@@ -1,0 +1,81 @@
+[SECTION CONFIG v.2003-04-21]
+ 0000010000                      NO. OF HISTORIES (< 2.1e9)
+ 60	                           ALLOTTED TIME (s) (+ FOR REAL TIME; - FOR CPU TIME)
+ 0.0                             RELATIVE UNCERTAINTY LIMIT (%)
+ 60                              REFRESH (+ FOR REAL TIME (s) < 50000 ; - FOR HISTORIES)
+ 1  1                            INITIAL RANDOM SEEDS
+[END OF SECTION]                 (SIGNALS THE END OF THIS SECTION)
+[SECTION SOURCE BOX ISOTROPIC GAUSS SPECTRUM v.2004-11-13]
+ 2                               PARTICLE TYPE (1=electron, 2=photon, 3=positron)
+ Energy(eV)  Probability         ENERGY SPECTRUM
+ 10.e3      1.0                  1st channel: [0.5,1] MeV with relative prob=0.2
+ 10.e3      -1                   A negative prob. signals the end of the spectrum
+ 0.000e0  0.000e0  1.000e0       CENTER COORDINATES OF THE BOX ENCLOSURE (cm)
+ 0.006e0  0.006e0  0.000e0       BOX SIDES (cm)
+ 0.000e0  0.000e0  0.000e0       EULER ANGLES (deg) TO ROTATE BOX (1st:Rz  2nd:Ry  3rd:Rz)
+ 0                               MATERIAL (0=DON'T CARE)
+ 0.000e0  0.000e0 -1.000e0       DIRECTION VECTOR, NO NEED TO NORMALIZE
+ 0.000e0                         APERTURE ANGLE, [0,180] (deg)
+[END OF SECTION]
+# [SECTION SOURCE PHASE SPACE FILE v.2004-11-16]
+# (particles.psf                 ) PSF FILENAME
+#  1                               SPLITTING FACTOR
+#  0.0 0.0 0.0                     EULER ANGLES (deg) TO ROTATE POSITION AND DIRECTION (1st:Rz 2nd:Ry 3rd:Rz)
+#  0.0 0.0 0.0                     CARTESIAN COMPONENTS OF POSITION SHIFT [DX,DY,DZ] (cm)
+#  1                               VALIDATE PSF BEFORE STARTING SIMULATION (1=YES, 0=NO)
+#  0.000e0                         MAX ENERGY (eV) IN PSF (IRRELEVANT IF VALIDATE=1)
+# [END OF SECTION]                 (A '#' IN SECTION 1ST COLUMN TURNS OFF SOURCE OR TALLY COMPLETELY)
+[SECTION PENELOPE+PENGEOM v.2003-04-21]
+(dixid00.level3.geo              ) GEOMETRY FILE NAME (*** 30 characters ***)
+(dixid.mat                       ) MATERIAL FILE NAME (*** 30 characters ***)
+ 7                               No. OF MATERIALS EXPECTED IN MAT FILE (0 for AUTO)
+ Mat EABS(e-) EABS(ph) EABS(e+) C1    C2    WCC      WCR      DSMAX   DESCRIPTION
+ 1   1.000e4  1.000e3  1.000e4  0.1   0.1   1.000e4  1.000e3  1.0e-4  crystal
+ 2   1.000e4  1.000e3  1.000e4  0.1   0.1   1.000e4  1.000e3  1.0e-4  diode
+ 3   1.000e9  1.000e9  1.000e9  0.0   0.0   0.000e0  0.000e0  1.0e30  perfect absorbent
+ 4   1.000e4  1.000e3  1.000e4  0.1   0.1   1.000e4  1.000e3  1.0e-5  backing
+ 5   1.000e4  1.000e3  1.000e4  0.1   0.1   1.000e4  1.000e3  1.0e-4  substrate
+ 6   1.000e4  1.000e3  1.000e4  0.1   0.1   1.000e4  1.000e3  1.0e-4  gas
+ 7   1.000e4  1.000e3  1.000e4  0.1   0.1   1.000e4  1.000e3  1.0e30  pseudo-vacuum
+[END OF SECTION]
+[SECTION TALLY SPATIAL DOSE DISTRIB v.2003-04-01]
+-20e-4 20e-4  40                 XMIN,XMAX(cm),NXBIN (0 for DX=infty)
+-20e-4 20e-4  40                 YMIN,YMAX(cm),NYBIN (0 for DY=infty)
+ 0.0   0.0     0                 ZMIN,ZMAX(cm),NZBIN (0 for DZ=infty)
+ 1                               PRINT COORDINATES IN REPORT (1=yes,0=no)
+[END OF SECTION]
+[SECTION TALLY SPATIAL DOSE DISTRIB v.2003-04-01]
+-20e-4 20e-4  40                 XMIN,XMAX(cm),NXBIN (0 for DX=infty)
+ 0.0   0.0     0                 YMIN,YMAX(cm),NYBIN (0 for DY=infty)
+ 0.0   10e-3 100                 ZMIN,ZMAX(cm),NZBIN (0 for DZ=infty)
+ 1                               PRINT COORDINATES IN REPORT (1=yes,0=no)
+[END OF SECTION]
+[SECTION TALLY SPATIAL DOSE DISTRIB v.2003-04-01]
+ 0.0   0.0     0                 XMIN,XMAX(cm),NXBIN (0 for DX=infty)
+-20e-4 20e-4  40                 YMIN,YMAX(cm),NYBIN (0 for DY=infty)
+ 0.0   10e-3 100                 ZMIN,ZMAX(cm),NZBIN (0 for DZ=infty)
+ 1                               PRINT COORDINATES IN REPORT (1=yes,0=no)
+[END OF SECTION]
+[SECTION TALLY ENERGY DEPOSITION PULSE SPECTRUM v.2003-04-01]
+ 1                               DETECTION MATERIAL
+ 0.0 50.0e3  50                  EMIN,EMAX(eV), No. OF E CHANNELS
+[END OF SECTION]
+# [SECTION TALLY PHASE SPACE FILE v.2004-04-06]
+#  1                               DETECTION MATERIAL (NOT EQUAL 0)
+# (output.psf                    ) PHASE SPACE FILE NAME TO BE WRITTEN
+# [END OF SECTION]
+[SECTION TALLY PARTICLE CURRENT SPECTRUM v.2005-02-05]
+ 3                               DETECTION MATERIAL
+ 0.0 50.0e3  50                  EMIN,EMAX(eV), No. OF E CHANNELS
+[END OF SECTION]
+[SECTION TALLY PARTICLE TRACK STRUCTURE v.2005-08-01]
+(tracks.dat                    ) OUTPUT FILE (*** 30 characters ***)
+ 1000                            REPORT ONE TRACK EVERY THIS NO. OF HISTORIES
+[END OF SECTION]
+[SECTION INTERACTION FORCING v.2005-06-02]
+ 0  0  0  10.0  1.0  1.0         MAT,KPAR,ICOL,FORCING,WMIN,WMAX (SET MAT=0 TO END)
+[END OF SECTION]
+
+>>>> END OF FILE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+

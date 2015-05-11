@@ -1,0 +1,32 @@
+6
+5 8 11 13 14 19
+.0401 .5396 .0282 .0116 .3772 .0033
+2.23
+and therefore has modest x-ray attenuation.
+This composition was taken from Corning No. 7740
+
+
+
+
+
+
+!---------------------------------- this is line 13 -------------
+Optical parameters (use same number of digits)
+enter first number of wavelength points to use (max. 30)
+then, wavelenghts (as integers, in nm)
+then, refraction index(wavelenghts)
+then, absorption 1/mfp (wavelenghts) (in cm-1)
+then, wavelength for the scattering 1/mfp
+then, scattering 1 / mean free path (in cm-1)
+
+
+1
+500     1.8
+
+500     1
+
+500  
+1
+T
+
+(use the constant instead of lambda and 1/mfp)

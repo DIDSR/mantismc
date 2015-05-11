@@ -1,0 +1,19 @@
+FC       = ifort -w -w95 -fpp1 -132 -D_LINUX  -O3 -tpp7 
+OBJS     = detect2.o mantis.o
+
+mantis.o: mantis.f
+	$(FC) -c  $<         
+detect2.o: detect2.f90
+	$(FC) -c detect2.f90
+
+
+EXE     = mantis
+all : $(EXE)
+$(EXE) : $(OBJS)
+	$(FC) $(FS) -o $(EXE) $(OBJS) 
+	rm -f *.mod *.o
+
+clean :
+	-rm -f a.out core $(OBJS) *.mod
+#-------------------------------------------------------------------------------
+

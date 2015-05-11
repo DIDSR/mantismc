@@ -1,0 +1,36 @@
+  
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# [SECTION REPORT ENERGY CURRENT]
+# Description:
+#   Sum of energies of particles entering the detector
+#   per primary history.
+# Detection material:   3
+#
+# Particle_charge=-1,0,+1 and 3 indicate electrons, photons,
+#   positrons and the sum, respectively.
+#
+# Particle_charge : Total_energy(eV) : +-2sigma
+-1  0.00000E+00  0.0E+00
+ 0  1.41183E+00  2.8E+00
+ 1  0.00000E+00  0.0E+00
+ 3  1.41183E+00  2.8E+00
+ 
+# Performance report
+#   Random seeds:
+#            1
+#            1
+#   No. of histories simulated [N]:
+#         7083
+#   CPU time [t] (s):
+#    5.71641E+02
+#   Speed (histories/s):
+#    1.23907E+01
+#   Average uncertainty in % [uncert]:
+#    1.99986E+02
+#   Intrinsic efficiency [N*uncert^2]^-1:
+#    3.53008E-09
+#   Absolute efficiency [t*uncert^2]^-1:
+#    4.37399E-08
+#
+# Have a nice day.
+ 

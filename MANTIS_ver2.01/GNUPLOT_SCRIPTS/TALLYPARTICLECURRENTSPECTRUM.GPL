@@ -1,0 +1,52 @@
+# gnuplot script file for penEasy
+# Last update:
+#   2005-02-21 by JS
+
+# Factor from keV to eV:
+f = 1.0e3
+
+####################
+# Particle spectra #
+####################
+
+reset
+set style line 1 linetype -1 linewidth 1 pointtype 8 pointsize 0.5
+
+set title "Positron Current Spectrum"
+set xlabel "energy[E] (keV)"
+set ylabel "p(E) (1/keV/history)"
+plot "mantis_demo_CsItallyParticleCurrentSpectrum-positron.dat" using ($2/f):($3*f):($4*f) notitle with yerrorbars linestyle 1, \
+     "mantis_demo_CsItallyParticleCurrentSpectrum-positron.dat" using ($1/f):($3*f) notitle with steps linestyle 1
+pause -1 "Press OK"
+
+set title "Photon Current Spectrum"
+set xlabel "energy[E] (keV)"
+set ylabel "p(E) (1/keV/history)"
+plot "mantis_demo_CsItallyParticleCurrentSpectrum-photon.dat" using ($2/f):($3*f):($4*f) notitle with yerrorbars linestyle 1, \
+     "mantis_demo_CsItallyParticleCurrentSpectrum-photon.dat" using ($1/f):($3*f) notitle with steps linestyle 1
+pause -1 "Press OK"
+
+set title "Electron Current Spectrum"
+set xlabel "energy[E] (keV)"
+set ylabel "p(E) (1/keV/history)"
+plot "mantis_demo_CsItallyParticleCurrentSpectrum-electron.dat" using ($2/f):($3*f):($4*f) notitle with yerrorbars linestyle 1, \
+     "mantis_demo_CsItallyParticleCurrentSpectrum-electron.dat" using ($1/f):($3*f) notitle with steps linestyle 1
+pause -1 "Press OK"
+
+
+##################
+# Energy current #
+##################
+
+reset
+set style line 1 linetype -1 linewidth 1 pointtype 8 pointsize 1
+
+set title "Total Energy Current"
+set xtics ("electrons" -1, "photons" 0, "positrons" +1, "total" +3)
+set ylabel "Energy (keV/history)"
+set boxwidth 0.5 relative
+set style fill solid 0.5
+plot [-2:4] [0:] "mantis_demo_CsItallyParticleCurrentSpectrum-totalE.dat" using 1:($2/f) notitle with boxes linestyle 1, \
+                 "mantis_demo_CsItallyParticleCurrentSpectrum-totalE.dat" using 1:($2/f):($3/f) notitle with yerrorbars linestyle 1
+pause -1 "Press OK"
+

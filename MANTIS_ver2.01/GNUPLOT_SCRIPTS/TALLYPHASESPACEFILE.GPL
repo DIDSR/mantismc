@@ -1,0 +1,167 @@
+# gnuplot script file for penEasy
+# Last update:
+#   2005-03-27 by JS
+#     Bug in 'smooth frequency' has been corrected. The bug caused the
+#     script to abort when te PSF contained no particles of a given type.
+#   2004-12-16 by JS
+
+pause -1 "If the name of your Phase Space File (PSF) is not 'output.psf' this script will abort."
+pause -1 "In this case, edit this script and replace 'output.psf' by the actual PSF name."
+
+set style line 1 linetype -1 linewidth 1 pointtype 8 pointsize 1
+
+set title "PSF: number of particles of each type"
+unset xlabel
+set xtics ("electrons" 1, "photons" 2, "positrons" 3)
+set ylabel "No. of particles"
+set boxwidth 0.5 relative
+set style fill solid 0.5
+plot [0:4] [0:] "output.psf" using 1:(1) notitle smooth frequency with boxes linestyle 1
+set xtics autofreq
+pause -1 "Press OK"
+
+
+##################
+# Energy spectra #
+##################
+
+pause -1 "For the next spectra plots the width of the energy bin is set to 1 MeV."
+pause -1 "Edit the variable named 'deltaE' in this script to change the bin width."
+
+# Channel width in eV:
+deltaE = 1.0e6
+
+# Factor from eV to keV:
+f = 1.0e-3
+
+set title "PSF: electrons energy spectrum"
+set xlabel "E (keV)"
+set ylabel "No. electrons"
+plot [0:] [0:] "" using ($1==1?(floor($2/deltaE)*deltaE*f):0):(1) notitle smooth frequency with steps linestyle 1
+pause -1 "Press OK"
+
+set title "PSF: photons energy spectrum"
+set xlabel "E (keV)"
+set ylabel "No. photons"
+plot [0:] [0:] "" using ($1==2?(floor($2/deltaE)*deltaE*f):0):(1) notitle smooth frequency with steps linestyle 1
+pause -1 "Press OK"
+
+set title "PSF: positrons energy spectrum"
+set xlabel "E (keV)"
+set ylabel "No. positrons"
+plot [0:] [0:] "" using ($1==3?(floor($2/deltaE)*deltaE*f):0):(1) notitle smooth frequency with steps linestyle 1
+pause -1 "Press OK"
+
+
+#########################
+# Spatial distributions #
+#########################
+
+set size ratio -1
+
+set title "PSF: spatial position of electrons"
+set xlabel "x (cm)"
+set ylabel "y (cm)"
+set zlabel "z (cm)"
+splot "" using ($1==1?$3:0):($1==1?$4:0):($1==1?$5:0) notitle with dots
+pause -1 "Press OK"
+
+set title "PSF: spatial position of photons"
+set xlabel "x (cm)"
+set ylabel "y (cm)"
+set zlabel "z (cm)"
+splot "" using ($1==2?$3:0):($1==2?$4:0):($1==2?$5:0) notitle with dots
+pause -1 "Press OK"
+
+set title "PSF: spatial position of positrons"
+set xlabel "x (cm)"
+set ylabel "y (cm)"
+set zlabel "z (cm)"
+splot "" using ($1==3?$3:0):($1==3?$4:0):($1==3?$5:0) notitle with dots
+pause -1 "Press OK"
+
+set size noratio
+
+
+#########################
+# Angular distributions #
+#########################
+
+# 100 bins per angular variable:
+deltaCosTheta = 2.0/100
+deltaPhi = 360.0/100
+
+set angles degrees
+set ytics 45
+set title "PSF: direction of flight of electrons (polar coordinates)"
+set xlabel "cos(polar_angle)"
+set ylabel "azimuthal_angle (deg)"
+plot [-1:+1] [0:360] "" using ($1==1?$8:1/0):($6**2+$7**2==0.0?0:($7<0.0?arg($6*{1,0}+$7*{0,1})+360:arg($6*{1,0}+$7*{0,1}))) notitle with dots
+set ytics autofreq
+pause -1 "Press OK"
+
+set title "PSF: polar angle distribution of electrons"
+set xlabel "cos(polar_angle)"
+set ylabel "No. electrons"
+plot [-1:+1] [0:] "" using ($1==1?(floor($8/deltaCosTheta)*deltaCosTheta):0):(1) notitle smooth frequency with steps linestyle 1
+pause -1 "Press OK"
+
+set angles degrees
+set xtics 45
+set title "PSF: azimuthal angle distribution of electrons"
+set xlabel "azimuthal_angle (deg)"
+set ylabel "No. electrons"
+plot [0:360] [0:] "" using ($1==1?(floor($6**2+$7**2==0.0?0:($7<0.0?arg($6*{1,0}+$7*{0,1})+360:arg($6*{1,0}+$7*{0,1}))/deltaPhi)*deltaPhi):0):(1) notitle smooth frequency with steps linestyle 1
+set xtics autofreq
+pause -1 "Press OK"
+
+
+set angles degrees
+set ytics 45
+set title "PSF: direction of flight of photons (polar coordinates)"
+set xlabel "cos(polar_angle)"
+set ylabel "azimuthal_angle (deg)"
+plot [-1:+1] [0:360] "" using ($1==2?$8:1/0):($6**2+$7**2==0.0?0:($7<0.0?arg($6*{1,0}+$7*{0,1})+360:arg($6*{1,0}+$7*{0,1}))) notitle with dots
+set ytics autofreq
+pause -1 "Press OK"
+
+set title "PSF: polar angle distribution of photons"
+set xlabel "cos(polar_angle)"
+set ylabel "No. photons"
+plot [-1:+1] [0:] "" using ($1==2?(floor($8/deltaCosTheta)*deltaCosTheta):0):(1) notitle smooth frequency with steps linestyle 1
+pause -1 "Press OK"
+
+set angles degrees
+set xtics 45
+set title "PSF: azimuthal angle distribution of photons"
+set xlabel "azimuthal_angle (deg)"
+set ylabel "No. photons"
+plot [0:360] [0:] "" using ($1==2?(floor($6**2+$7**2==0.0?0:($7<0.0?arg($6*{1,0}+$7*{0,1})+360:arg($6*{1,0}+$7*{0,1}))/deltaPhi)*deltaPhi):0):(1) notitle smooth frequency with steps linestyle 1
+set xtics autofreq
+pause -1 "Press OK"
+
+
+set angles degrees
+set ytics 45
+set title "PSF: direction of flight of positrons (polar coordinates)"
+set xlabel "cos(polar_angle)"
+set ylabel "azimuthal_angle (deg)"
+plot [-1:+1] [0:360] "" using ($1==3?$8:1/0):($6**2+$7**2==0.0?0:($7<0.0?arg($6*{1,0}+$7*{0,1})+360:arg($6*{1,0}+$7*{0,1}))) notitle with dots
+set ytics autofreq
+pause -1 "Press OK"
+
+set title "PSF: polar angle distribution of positrons"
+set xlabel "cos(polar_angle)"
+set ylabel "No. positrons"
+plot [-1:+1] [0:] "" using ($1==3?(floor($8/deltaCosTheta)*deltaCosTheta):0):(1) notitle smooth frequency with steps linestyle 1
+pause -1 "Press OK"
+
+set angles degrees
+set xtics 45
+set title "PSF: azimuthal angle distribution of positrons"
+set xlabel "azimuthal_angle (deg)"
+set ylabel "No. positrons"
+plot [0:360] [0:] "" using ($1==3?(floor($6**2+$7**2==0.0?0:($7<0.0?arg($6*{1,0}+$7*{0,1})+360:arg($6*{1,0}+$7*{0,1}))/deltaPhi)*deltaPhi):0):(1) notitle smooth frequency with steps linestyle 1
+set xtics autofreq
+pause -1 "Press OK"
+

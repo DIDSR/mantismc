@@ -1,0 +1,70 @@
+# gnuplot script file for penEasy
+# Last update:
+#   2005-08-01 by JS
+
+# Factor from eV to keV:
+f = 1.0e-3
+
+################
+# 2D Map plots #
+################
+
+set style line 1 linetype -1 linewidth 1 pointtype 8 pointsize 0.5
+set size ratio -1
+# Determine voxel color from corner left-bottom:
+set pm3d map corners2color c1
+# In case you want a gray scale plot:
+# set palette gray negative
+
+set title "XY Dose Distribution [or 1st SDD tally] (keV/cm^2/history)"
+set xlabel "x (cm)"
+set ylabel "y (cm)"
+splot "mantis_demo_CsItallySpatialDoseDistrib_c1.dat" using 2:5:($7*f) notitle
+pause -1 "Press OK"
+
+set title "XZ Dose Distribution [or 2nd SDD tally] (keV/cm^2/history)"
+set xlabel "x (cm)"
+set ylabel "z (cm)"
+splot "mantis_demo_CsItallySpatialDoseDistrib_c2.dat" using 2:5:($7*f) notitle
+pause -1 "Press OK"
+
+set title "YZ Dose Distribution [or 3rd SDD tally] (keV/cm^2/history)"
+set xlabel "y (cm)"
+set ylabel "z (cm)"
+splot "mantis_demo_CsItallySpatialDoseDistrib_c3.dat" using 2:5:($7*f) notitle
+pause -1 "Press OK"
+
+#################
+# Surface plots #
+#################
+
+reset
+set style line 1 linetype -1 linewidth 1 pointtype 8 pointsize 0.5
+set pm3d hidden3d 1
+set colorbox horiz user origin 0.6,0.05 size 0.3,0.04
+unset surface
+set contour
+
+set title "XY Dose Distribution [or 1st SDD tally] (keV/cm^2/history)"
+set xlabel "x (cm)"
+set ylabel "y (cm)"
+set zlabel "dose"
+splot "mantis_demo_CsItallySpatialDoseDistrib_c1.dat" using 2:5:($7*f) notitle with lines linestyle 1
+pause -1 "Press OK"
+
+set title "XZ Dose Distribution [or 2nd SDD tally] (keV/cm^2/history)"
+set xlabel "x (cm)"
+set ylabel "z (cm)"
+set zlabel "dose"
+splot "mantis_demo_CsItallySpatialDoseDistrib_c2.dat" using 2:5:($7*f) notitle with lines linestyle 1
+pause -1 "Press OK"
+
+set title "YZ Dose Distribution [or 3rd SDD tally] (keV/cm^2/history)"
+set xlabel "y (cm)"
+set ylabel "z (cm)"
+set zlabel "dose"
+splot "mantis_demo_CsItallySpatialDoseDistrib_c3.dat" using 2:5:($7*f) notitle with lines linestyle 1
+pause -1 "Press OK"
+
+# EOF
+

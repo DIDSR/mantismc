@@ -1,0 +1,47 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: mantis - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\agb\LOCALS~1\Temp\RSP9F.tmp" with contents
+[
+/compile_only /nologo /warn:nofileopt /fast /module:"Release/" /object:"Release/" 
+"C:\Documents and Settings\agb\My Documents\CODE\MANTIS_V2\DETECT2.F90"
+]
+Creating command line "link.exe kernel32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/mantis.pdb" /machine:I386 /out:"Release/mantis.exe"  ".\Release\DETECT2.OBJ" ".\Release\mantis.obj" "
+<h3>Output Window</h3>
+Compiling Fortran...
+C:\Documents and Settings\agb\My Documents\CODE\MANTIS_V2\DETECT2.F90
+C:\Documents and Settings\agb\My Documents\CODE\MANTIS_V2\DETECT2.F90(323) : Warning: The return value of this FUNCTION has not been defined.   [RMT]
+    function rmt(r)
+-------------^
+Linking...
+Release/mantis.exe : warning LNK4084: total image size 856952832 exceeds max (268435456); image may not run
+Creating temporary file "C:\DOCUME~1\agb\LOCALS~1\Temp\RSPA1.tmp" with contents
+[
+/compile_only /inline:size /nologo /warn:nofileopt /fast /module:"Release/" /object:"Release/" 
+"C:\Documents and Settings\agb\My Documents\CODE\MANTIS_V2\mantis.f"
+]
+<h3>Output Window</h3>
+Compiling Fortran...
+C:\Documents and Settings\agb\My Documents\CODE\MANTIS_V2\mantis.f
+C:\Documents and Settings\agb\My Documents\CODE\MANTIS_V2\penvared.f(561) : Warning: Variable R is used before its value has been defined
+      IF(r.GT.WFORCE) THEN
+---------^
+C:\Documents and Settings\agb\My Documents\CODE\MANTIS_V2\penvared.f(492) : Warning: Variable R is used before its value has been defined
+        DS=-LOG(r)/ST
+----------------^
+C:\Documents and Settings\agb\My Documents\CODE\MANTIS_V2\penvared.f(148) : Warning: Variable R is used before its value has been defined
+      IF(r.LT.PKILL) THEN
+---------^
+
+
+
+<h3>Results</h3>
+mantis.exe - 0 error(s), 5 warning(s)
+</pre>
+</body>
+</html>

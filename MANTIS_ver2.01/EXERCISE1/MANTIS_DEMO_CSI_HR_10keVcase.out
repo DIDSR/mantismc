@@ -1,0 +1,23 @@
+ Case options:
+           1           3           1           2
+ dii statistics:
+ # of histories                                        10000
+ # of primaries in phosphor                     7176
+ optical photons (on average)          547.5151    
+ optical photons (total)                       3928968
+ absorbed                                 2030998
+ killed in surface                        1406333
+ counted                                   464640
+ photons emerged outside screen             26997
+ total number of scattering events          64260
+ mean # scatterings per histories      1.6355440E-02
+ mean # absorptions per histories      0.5169291    
+ mean distance per history (cm)        4.492258201901199E-003
+ time/track (seconds)[real-time]       3.080086806510005E-005
+ collection efficiency [%]              11.82601    
+ lost somewhere (just checking)                 0
+ Swank factor            0.933127675623624     +/-  7.039282284573819E-003
+ m0,m1,m2          7176      464640   32241088.0000000     
+ m1/histories (light output per xray)    64.7491638795987     
+ xm/total histories (interaction eff)   0.7176000    
+ estimated FWHM                             92.99999    
